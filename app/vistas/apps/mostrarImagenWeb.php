@@ -1,4 +1,4 @@
-<div class="imagenWeb">
+<div class="imagenWeb"><p>Vista previa</p>
 <?php
     $app = $datos['imagenWeb'];
     $src = 'recursos/imagenes/apps/web/'.$app.'.jpg';

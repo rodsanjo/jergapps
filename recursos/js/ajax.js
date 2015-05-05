@@ -1,5 +1,5 @@
 
-host = 'http://daweb.vv.si';
+host = '';
 host = '/daweb'; //'http://localhost/daweb';
 name_app = '/apps'
 

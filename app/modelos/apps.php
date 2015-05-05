@@ -7,6 +7,7 @@ namespace modelos;
 class apps{
     
     public static $carpetas_no_apps = array( '.' , '..', 'home', 'apps');
+    private static $file_name = 'texto_apps.txt';   //fichero donde está el texto
     
     public static function getCarpetas($directorio){
         $carpetas_apps = array();
@@ -59,6 +60,32 @@ class apps{
                     $array = array_values($array);
             return true;
     }
+    
+    /**
+     * Lee las líneas del fichero, descarta la primera línea, y cada una
+     * de ellas las guarda como un array dentro del array self::$enlaces.
+     */
+    private static function leer_fichero(){
+        $file_path = self::getRutaFichero();    //ruta del fichero
+        self::$enlaces = array();    //// Vaciamos el array por si tuviera datos de una lectura anterior.
+        $lines = file($file_path, FILE_IGNORE_NEW_LINES); // Lee las líneas y genera un array de índice entero con una cadena de caracteres en cada entrada del array. FILE_IGNORE_NEW_LINES es una constante entera de valor 2 que hace que no se incluya en la líneas los caracteres de fin de línea y nueva línea.
+        foreach($lines as $numero => $line){  //$numero++ en cada vuelta y lo guarda en $line
+            $enlace = explode(";", $line);
+            if($numero!=0){
+                self::$enlaces[$numero][self::$campo1] = $enlace[0];
+                self::$enlaces[$numero][self::$campo2] = $enlace[1];
+                self::$enlaces[$numero][self::$campo3] = $enlace[2];   //Se lee tb el "intro" (\n) del final de linea
+            }
+        }
+    }
+    
+    /**
+     * Para obtener la ruta del fichero
+     * @return type
+     */
+    private static function getRutaFichero(){
+        return PATH_APP."modelos/".self::$file_name;    //ruta del fichero
+    }    
 }
 
 

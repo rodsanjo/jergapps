@@ -12,7 +12,7 @@
         include PATH_APPLICATION_APP."vistas/zonas/head.php";
     ?>   
 </head>
-<body onload="visualizarSeccion(window.location.hash);">
+<body>
     <div class="teuuuu">
         <div id='fondoCentral'></div>
         <div id="encabezado">
