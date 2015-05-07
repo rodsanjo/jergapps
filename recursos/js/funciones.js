@@ -86,8 +86,4 @@ $(document).ready(function(){
             $("#carrito_oculto").slideToggle();  
         }
     );
-    $(".boton_app").mouseenter(function(event){
-        var imagenWeb = event.target.getAttribute('data_url');
-        ajax('#rightColumn','apps','mostrarImagenWeb/ajax/'+imagenWeb);
-    });
 });

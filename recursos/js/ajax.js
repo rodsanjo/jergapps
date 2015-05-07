@@ -1,6 +1,6 @@
 
-host = '';
-host = '/daweb'; //'http://localhost/daweb';
+host = ''; //Host
+host = '/web/jergapps'; //'http://localhost/web/jergapps';
 name_app = '/apps'
 
 function cargar(div, url) {
@@ -12,37 +12,52 @@ function ajax(id,controlador,metodo_parametros){
     peticion = '/'+controlador+'/'+metodo_parametros;
     uri = host+name_app+peticion;
     //alert('div = '+id+'\nurl = '+uri);
-    //$(id).html('<p style="text-align: center;margin-top: 5%;"><img src="../home/recursos/imagenes/ajax-loader.gif" /></p>');
-    $.ajax({
-        //type: "POST",
-        //is_ajax: true,
-        success: function() {
-            cargar(id,uri);
-        }
-    })
-/*
-    jQuery.post(
-        {is_ajax: "true"},
-        function(data, textStatus, jqXHR) {
-            cargar(id,uri);
-        }
-        
-    );
-*/
+    $(id).html('<p style="text-align: center;margin-top: 5%;"><img src="../home/recursos/imagenes/ajax-loader.gif" /></p>');
+    cargar(id,uri);
 }
 
-function mostrarImagen(app){
-    //alert(app);
+$(document).ready(function(){        
+    //Mostrar por ajax la imagen previa
+    $(".boton_app").mouseenter(function(event){
+        var x = $(event.target);
+        imagenWeb = x.data('url');
+        //var imagenWeb = event.target.getAttribute('data-url');
+        //alert(imagenWeb);
+        
+        //$(id).html('<p style="text-align: center;margin-top: 5%;"><img src="../home/recursos/imagenes/ajax-loader.gif" /></p>');
+
+        //mostrarImagenWeb: 2 formas:
+        conJQueryPost(imagenWeb); //it works
+        //con$Ajax(imagenWeb); //it doesn't work
+    });
+});
+
+//2 formas:
+function conJQueryPost(imagenWeb){
+    //alert(imagenWeb);
     jQuery.post(
-        "/daweb/apps/apps/mostrarImagenWeb/ajax/"+app //"http://localhost/daweb/apps/apps/mostrarImagenWeb/ajax/"+app
-        //"http://daweb.vv.si/apps/apps/mostrarImagenWeb/ajax/"+app
-        //,{is_ajax: "true"}
+        host+name_app+'/apps/mostrar_imagen_web'
+        ,{is_ajax: "true", imagenWeb: imagenWeb}
         ,function(data, textStatus, jqXHR) {
             $("#rightColumn").html(data);
         }
         
     );
 }
-
-
+function con$Ajax(imagenWeb){
+    $ajax({
+        method:'POST',
+        url: host+name_app+'/apps/mostrar_imagen_web'
+        ,data: { is_ajax: true, imagenWeb: imagenWeb }
+//        success: function(msg) {
+//            $('#rightColumn').html( msg );
+//        }
+        .done(function( data ){
+            $('#rightColumn').html( data );
+        })
+        .failed(function(){
+            $('#rightColumn').html( 'imagen no disponible' );
+        })
+    })
+}
 

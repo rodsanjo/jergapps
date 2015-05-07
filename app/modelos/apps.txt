@@ -1,0 +1,5 @@
+nombre_carpeta;texto
+Seinar;En SERVICIOS DE INGENIERÍA Y ARQUITECTURA ponemos a su servicio una gran plantilla de profesionales independientes para realizar su proyecto.
+RAS;Inmobiliaria ubicada en Ávila Residencial Avenida del Sotillo S.L.
+HogarMadrid;Hogar Madrid le ofrece sus servicios inmobiliarios en diferentes zonas de Madrid, con profesionales que tienen mas de quince años de experiencia en el sector.
+Jergo-blog;Programador Web interesado en continuar su desarrollo y formación profesional en una empresa del sector, aplicando los conocimientos teóricos y prácticos adquiridos durante estos años de estudio y trabajo. ¡Navegue para darse a conocer!

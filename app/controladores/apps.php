@@ -15,19 +15,18 @@ class apps extends \core\Controlador {
         \core\HTTP_Respuesta::enviar($http_body);
     }
     
-    public function mostrarImagenWeb(array $datos = array(), $is_ajax = false){
-        
-        $get = \core\http_requerimiento::get();
-        //var_dump($get);
+    public function mostrar_imagen_web(array $datos = array(), $is_ajax = false){
         
         $post = \core\http_requerimiento::post();
         //var_dump($post);
         
-        if(isset($get['p3']) && $get['p3'] == 'ajax'){
-            $is_ajax = true;
+        if(isset($post['is_ajax'])){
+            $is_ajax = $post['is_ajax'];
         }
-        if(isset($get['p4']) && !is_null($get['p4']) ){
-            $datos['imagenWeb'] = $get['p4'];
+        if(isset($post['imagenWeb']) && !is_null($post['imagenWeb']) ){
+            $datos['imagenWeb'] = $post['imagenWeb'];
+        }else{
+            $datos['imagenWeb'] = 'Imagen no disponible';
         }
         
         $datos['view_content'] = \core\Vista::generar(__FUNCTION__, $datos);
