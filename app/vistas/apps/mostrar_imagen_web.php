@@ -1,6 +1,7 @@
 <div class="imagenWeb"><p>Vista previa</p>
 <?php
     $app = $datos['imagenWeb'];
+    //$texto_app = $datos['texto_app'];
     $src = 'recursos/imagenes/apps/web/'.$app.'.jpg';
     if( !file_exists($src) ){
         $src = URL_HOST."$app/recursos/imagenes/imagenWeb.jpg";

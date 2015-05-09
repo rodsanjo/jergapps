@@ -7,7 +7,9 @@ namespace modelos;
 class apps{
     
     public static $carpetas_no_apps = array( '.' , '..', 'home', 'apps');
+    
     private static $file_name = 'texto_apps.txt';   //fichero donde está el texto
+    private static $texto_apps = array();
     
     public static function getCarpetas($directorio){
         $carpetas_apps = array();
@@ -62,19 +64,32 @@ class apps{
     }
     
     /**
+     * Devuelve una texto concreto o todos
+     * @param type $id
+     * @return type
+     */
+    public static function get_texo_app($id = null) {
+        self::leer_fichero();
+        if($id!=null){
+            return self::$texto_apps[$id];
+        }else{
+            return self::$texto_apps;
+        }
+    }
+    
+    /**
      * Lee las líneas del fichero, descarta la primera línea, y cada una
-     * de ellas las guarda como un array dentro del array self::$enlaces.
+     * de ellas las guarda como un array dentro del array self::$texto_apps.
      */
     private static function leer_fichero(){
         $file_path = self::getRutaFichero();    //ruta del fichero
-        self::$enlaces = array();    //// Vaciamos el array por si tuviera datos de una lectura anterior.
+        self::$texto_apps = array();    //// Vaciamos el array por si tuviera datos de una lectura anterior.
         $lines = file($file_path, FILE_IGNORE_NEW_LINES); // Lee las líneas y genera un array de índice entero con una cadena de caracteres en cada entrada del array. FILE_IGNORE_NEW_LINES es una constante entera de valor 2 que hace que no se incluya en la líneas los caracteres de fin de línea y nueva línea.
         foreach($lines as $numero => $line){  //$numero++ en cada vuelta y lo guarda en $line
             $enlace = explode(";", $line);
             if($numero!=0){
-                self::$enlaces[$numero][self::$campo1] = $enlace[0];
-                self::$enlaces[$numero][self::$campo2] = $enlace[1];
-                self::$enlaces[$numero][self::$campo3] = $enlace[2];   //Se lee tb el "intro" (\n) del final de linea
+                self::$texto_apps[$numero][self::$campo1] = $enlace[0];
+                self::$texto_apps[$numero][self::$campo3] = $enlace[1];   //Se lee tb el "intro" (\n) del final de linea
             }
         }
     }

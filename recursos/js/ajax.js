@@ -27,8 +27,9 @@ $(document).ready(function(){
         //$(id).html('<p style="text-align: center;margin-top: 5%;"><img src="../home/recursos/imagenes/ajax-loader.gif" /></p>');
 
         //mostrarImagenWeb: 2 formas:
-        conJQueryPost(imagenWeb); //it works
-        //con$Ajax(imagenWeb); //it doesn't work
+        //conJQueryPost(imagenWeb); //it works
+        //conAjax1(imagenWeb); //it works
+        conAjax2(imagenWeb); //it works
     });
 });
 
@@ -44,20 +45,28 @@ function conJQueryPost(imagenWeb){
         
     );
 }
-function con$Ajax(imagenWeb){
-    $ajax({
-        method:'POST',
-        url: host+name_app+'/apps/mostrar_imagen_web'
+function conAjax1(imagenWeb){
+    //alert(imagenWeb)
+    $.ajax({
+        method:'POST'
+        ,url: host+name_app+'/apps/mostrar_imagen_web'
         ,data: { is_ajax: true, imagenWeb: imagenWeb }
-//        success: function(msg) {
-//            $('#rightColumn').html( msg );
-//        }
+        ,success: function(msg) {
+            $('#rightColumn').html( msg );
+        }
+    })
+}
+function conAjax2(imagenWeb){
+    //alert(imagenWeb)
+    $.ajax({
+        method:'POST'
+        ,url: host+name_app+'/apps/mostrar_imagen_web'
+        ,data: { is_ajax: true, imagenWeb: imagenWeb }
+    })
         .done(function( data ){
             $('#rightColumn').html( data );
         })
         .failed(function(){
             $('#rightColumn').html( 'imagen no disponible' );
         })
-    })
 }
-
