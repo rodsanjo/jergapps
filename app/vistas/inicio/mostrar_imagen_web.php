@@ -1,4 +1,4 @@
-<div class="imagenWeb"><p>Vista previa</p>
+<div class="imagenWeb">
 <?php
     $app = $datos['imagenWeb'];
     //$texto_app = $datos['texto_app'];

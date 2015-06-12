@@ -1,7 +1,7 @@
 <?php
 namespace controladores;
 
-class apps extends \core\Controlador {
+class inicio extends \core\Controlador {
 	
     public function index(array $datos = array()) {
         
@@ -40,7 +40,7 @@ class apps extends \core\Controlador {
         //$datos['view_content'] = \core\Vista::generar(__FUNCTION__, $datos);
         //$http_body = \core\Vista_Plantilla::generar('DEFAULT', $datos);
         //\core\HTTP_Respuesta::enviar($http_body);
-    }    
+    }   
 	
 	
 } // Fin de la clase

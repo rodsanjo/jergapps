@@ -54,3 +54,8 @@
     transition: transform 800ms cubic-bezier(.190, 1, .220, 1);
 }
 
+@media (max-width: 768px){
+    #view_content{
+        width: 95%;
+    }
+}
