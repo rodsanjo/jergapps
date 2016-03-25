@@ -40,7 +40,8 @@ function conJQueryPost(imagenWeb){
         host+name_app+'/inicio/mostrar_imagen_web'
         ,{is_ajax: "true", imagenWeb: imagenWeb}
         ,function(data, textStatus, jqXHR) {
-            $("#rightColumn").html(data);
+            //$("#rightColumn").html(data);
+            $("#imagenWeb").html(data);
         }
         
     );

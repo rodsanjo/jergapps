@@ -13,7 +13,9 @@ root {
     /*border: solid 1px yellow;*/
     /*color: white;*/
 }
-
+img{
+    padding: 0px;
+}
 .teu{
     margin: 20px 30px;
     /*width: 900px;	/* para que el ancho sea fijo */

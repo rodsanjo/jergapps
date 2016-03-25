@@ -25,18 +25,21 @@
                 //include PATH_APPLICATION_APP."vistas/zonas/menu_up.php";
             ?>		
         </div>
-        <div id="view_content">
-            <?php
-                echo $datos['view_content'];
-            ?>       
-        </div>
-
+        <section>
+            <div id="view_content">
+                <?php
+                    echo $datos['view_content'];
+                ?>       
+            </div>
+            <div id="imagenWeb">
+            </div>
+        </section>
+        
         <div id="rightColumn">
             <?php 
                 //include PATH_APPLICATION_APP."vistas/zonas/rightColumn.php";
             ?> 
-        </div>	
-
+        </div>
         <div id="pie">
             <?php 
                 //include PATH_APPLICATION_APP."vistas/zonas/pie.php";
